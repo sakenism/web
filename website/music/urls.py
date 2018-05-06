@@ -1,13 +1,15 @@
 from django.conf.urls import patterns, include, url
-
-from django.contrib import admin
-admin.autodiscover()
+from . import views
 
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'website.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^music/', include('music.urls')),
+    #/music/
+    url(r'^$', views.index, name = 'index'),
+
+
+    #/music/712/
+    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
 )
